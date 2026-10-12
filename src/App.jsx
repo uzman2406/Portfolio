@@ -1,4 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import powergit1 from "./assets/powergit1.png";
+import powergit2 from "./assets/powergit2.png";
+import powergit3 from "./assets/powergit3.png";
+import intern1 from "./assets/intern1.png";
+import intern2 from "./assets/intern2.png";
+import intern3 from "./assets/intern3.png";
+import intern4 from "./assets/intern4.png";
+import sys1 from "./assets/sys1.png";
+import sys2 from "./assets/sys2.png";
+import sys3 from "./assets/sys3.png";
 
 const contact = {
   email: "anushauzma@gmail.com",
@@ -90,9 +100,9 @@ const projects = [
   {
     name: "PowerGit",
      images: [
-    "src/assets/powergit1.png",
-    "src/assets/powergit2.png",
-    "src/assets/powergit3.png",
+    powergit1,
+    powergit2,
+    powergit3,
    
   ],
     date: "May 2026",
@@ -115,10 +125,10 @@ const projects = [
    {
     name: "InternSarthi",
      images: [
-      "src/assets/intern4.png",
-    "src/assets/intern1.png",
-    "src/assets/intern2.png",
-    "src/assets/intern3.png",
+      intern4,
+      intern1,
+      intern2,
+      intern3,
     
   ],
     date: "December 2025",
@@ -141,9 +151,9 @@ const projects = [
   {
     name: "SysPulse",
      images: [
-    "src/assets/sys1.png",
-    "src/assets/sys2.png",
-    "src/assets/sys3.png",
+    sys1,
+    sys2,
+    sys3,
   ],
     date: "October 2025",
     problem: "Lab machines slow down and nobody can see why.",
