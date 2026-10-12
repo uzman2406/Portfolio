@@ -12,9 +12,9 @@
   color-scheme: dark;
 }
 [data-theme="light"] {
-  --bg: #f3f6fb; --surface: #b6e9e2; --surface2: #e9f0f9;
-  --ink: #0c1a2e; --muted: #51627a; --line: #d5deeb;
-  --a: #0e9f88; --a2: #d9730d; --a-ink: #0a7766;
+  --bg: #f3f6fb; --surface: #dcf2ef; --surface2: #e9f0f9;
+  --ink: #0c1a2e; --muted: #51627a; --line: #038461;
+  --a: #0a977f; --a2: #d9730d; --a-ink: #0a7766;
   --glow: rgba(14, 159, 136, 0.14); --dot: rgba(12, 26, 46, 0.15);
   color-scheme: light;
 }
@@ -126,7 +126,7 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
 .body { min-width: 0; }
 .grid2 { display: grid; gap: 0.9rem; }
 .tile {
-  background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--a);
+  background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--a);
   border-radius: 0.9rem; padding: 1.1rem 1.25rem; transition: transform 0.2s, border-color 0.2s;
 }
 .tile:hover { transform: translateY(-3px); border-color: var(--a); }
@@ -377,7 +377,7 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
 .work .tile { display: flex; flex-direction: column; }
 .more {
   align-self: flex-start; margin-top: 1rem; font: inherit; font-size: 0.9rem; color: var(--ink);
-  background: none; border: 1px solid var(--a); border-radius: 99px; padding: 0 1rem; min-height: 44px;
+  background: none; border: 3px solid var(--a); border-radius: 99px; padding: 0 1rem; min-height: 44px;
   cursor: pointer; transition: background 0.2s, color 0.2s;
 }
 .more:hover { background: var(--a); color: var(--on-a); }
