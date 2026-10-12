@@ -9,7 +9,11 @@ import intern4 from "./assets/intern4.png";
 import sys1 from "./assets/sys1.png";
 import sys2 from "./assets/sys2.png";
 import sys3 from "./assets/sys3.png";
-
+import certPowerBI from "./assets/cert-powerbi.jpg";
+import certSql from "./assets/cert-sql.jpg";
+import certAnalytics from "./assets/cert-dataanalytics.jpg";
+import certDsa from "./assets/cert-dsa.jpeg";
+import certPython from "./assets/cert-python.jpg";
 const contact = {
   email: "anushauzma@gmail.com",
   github: "https://github.com/uzman2406",
@@ -253,11 +257,11 @@ const education = [
 ];
 
 const certifications = [
-  "Power BI (Simplilearn, May 2026)",
-  "SQL Intermediate (HackerRank, May 2026)",
-  "Data Analytics Essentials (Cisco Networking Academy, May 2026)",
-  "DSA with C++ (RCPL India, KIT Kanpur, Feb 2026)",
-  "Python Essentials (Cisco Networking Academy, Aug 2025)",
+  { name: "Power BI", org: "Simplilearn", date: "May 2026", image: certPowerBI },
+  { name: "SQL (Intermediate)", org: "HackerRank", date: "May 2026", image: certSql },
+  { name: "Data Analytics Essentials", org: "Cisco Networking Academy", date: "May 2026", image: certAnalytics },
+  { name: "DSA with C++ Training", org: "RCPL India, KIT Kanpur", date: "Feb 2026", image: certDsa },
+  { name: "Python Essentials", org: "Cisco Networking Academy", date: "Aug 2025", image: certPython },
 ];
 
 /* ------------------------------------------------------------------
@@ -319,6 +323,8 @@ const trackRef = useRef(null);
 const [slide, setSlide] = useState(0);
 const [galleryProject, setGalleryProject] = useState(null);
 const [galleryIndex, setGalleryIndex] = useState(0);
+const [certOpen, setCertOpen] = useState(null);
+const [reelPaused, setReelPaused] = useState(false);
 
 const openGallery = (project) => {
   setGalleryProject(project);
@@ -365,11 +371,12 @@ const goTo = (i) => {
   });
   
 useEffect(() => {
-  if (!openWork && !galleryProject) return;
+  if (!openWork && !galleryProject && !certOpen) return;
 
   const onKey = (e) => {
     if (e.key === "Escape") {
       setOpenWork(null);
+      setCertOpen(null);  
       closeGallery();
     }
 
@@ -391,7 +398,7 @@ useEffect(() => {
 
   window.addEventListener("keydown", onKey);
   return () => window.removeEventListener("keydown", onKey);
-}, [openWork, galleryProject]);
+}, [openWork, galleryProject, certOpen]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -781,15 +788,38 @@ And when I'm not debugging something, you'll probably find me playing esports or
               ))}
             </ul>
 
-            <h3 className="sub reveal">Certifications</h3>
-            <ul className="certs reveal">
-              {certifications.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
+          
           </div>
         </section>
+{/* CERTIFICATIONS */}
+<section id="certs" className="certs-band">
+  <div className="cert-head">
+    <h2 className="reveal">Certifications</h2>
+    <button className="reel-toggle" aria-pressed={reelPaused}
+            onClick={() => setReelPaused(!reelPaused)}>
+      {reelPaused ? "Play" : "Pause"}
+    </button>
+  </div>
 
+  <div className={`reel full-bleed reveal ${reelPaused ? "paused" : ""}`}>
+    <ul className="reel-track">
+      {[...certifications, ...certifications].map((c, i) => {
+        const copy = i >= certifications.length;
+        return (
+          <li key={i} aria-hidden={copy || undefined}>
+            <button className="cert-card" tabIndex={copy ? -1 : 0}
+                    aria-label={`Open ${c.name} certificate`}
+                    onClick={() => setCertOpen(c)}>
+              <img src={c.image} alt={copy ? "" : `${c.name} certificate`} loading="lazy" />
+              <span className="cert-name">{c.name}</span>
+              <span className="meta">{c.org}, {c.date}</span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
        {/* CONTACT */}
 <section id="contact" className="contact">
   <div className="contact-intro">
@@ -826,6 +856,23 @@ And when I'm not debugging something, you'll probably find me playing esports or
           <div key={tech}><dt>{tech}</dt><dd>{how}</dd></div>
         ))}
       </dl>
+    </div>
+  </div>
+)}
+{certOpen && (
+  <div className="resume-overlay gallery-overlay" onClick={() => setCertOpen(null)}>
+    <div className="resume-card gallery-modal" role="dialog" aria-modal="true"
+         aria-label={`${certOpen.name} certificate`} onClick={(e) => e.stopPropagation()}>
+      <button className="resume-close" onClick={() => setCertOpen(null)} aria-label="Close">&times;</button>
+      <div className="gallery-heading">
+        <div>
+          <p className="meta">{certOpen.org} | {certOpen.date}</p>
+          <h3>{certOpen.name}</h3>
+        </div>
+      </div>
+      <div className="gallery-image-wrap">
+        <img src={certOpen.image} alt={`${certOpen.name} certificate from ${certOpen.org}`} />
+      </div>
     </div>
   </div>
 )}
