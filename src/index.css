@@ -731,3 +731,7 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
   height: clamp(9.5rem, 40vw, 12.75rem);
   aspect-ratio: auto;
 }
+
+body { line-height: 1.7; }
+.block, .about, .certs-band { padding-top: clamp(4rem, 9vw, 7rem); padding-bottom: clamp(4rem, 9vw, 7rem); }
+.block, .about { gap: 2rem clamp(2rem, 6vw, 5rem); }
