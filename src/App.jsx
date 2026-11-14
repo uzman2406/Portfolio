@@ -14,6 +14,8 @@ import certSql from "./assets/cert-sql.jpg";
 import certAnalytics from "./assets/cert-dataanalytics.jpg";
 import certDsa from "./assets/cert-dsa.jpeg";
 import certPython from "./assets/cert-python.jpg";
+import certintern from "./assets/cert-intern.jpg";
+
 const contact = {
   email: "anushauzma@gmail.com",
   github: "https://github.com/uzman2406",
@@ -262,6 +264,7 @@ const certifications = [
   { name: "Data Analytics Essentials", org: "Cisco Networking Academy", date: "May 2026", image: certAnalytics },
   { name: "DSA with C++ Training", org: "RCPL India, KIT Kanpur", date: "Feb 2026", image: certDsa },
   { name: "Python Essentials", org: "Cisco Networking Academy", date: "Aug 2025", image: certPython },
+  { name: "Python Developer Intern", org: "Learn Basics, Salem", date: "Oct 2026", image: certintern },
 ];
 
 /* ------------------------------------------------------------------
